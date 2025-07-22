@@ -27,14 +27,18 @@ ol {
   padding: 0;
 }
 
-#game-board li {
+#game-board>li>ol {
+  list-style: none;
   text-align: center;
-  display: inline;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
-#game-board li button {
+#game-board button {
   margin: 0.5rem;
   width: 100px;
   height: 100px;
   cursor: pointer;
+  font-size: 4rem;
 }
