@@ -1,25 +1,78 @@
 main {
     display: flex;
     justify-content: center;
+    gap: 1rem;
 }
 
 #game-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
     background-color: rgba(0, 0, 0, 0.938);
     width: 40rem;
-    height: 40rem;
+    height: 30rem;
     padding: 1rem;
     border-radius: 8px;
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
 }
 
-#players {
-    display: flex;
-    justify-content: space-evenly;
-    list-style: none;
-    color: white;
-    font-size: 1.3rem;
+ol {
+    padding: 0;
 }
 
-.player-symbol{
-    margin: 0 1rem 0 1rem;
+#game-board li ol {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    list-style: none;
+    text-align: center;
+}
+
+#game-board button {
+    margin: 0.5rem;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    font-size: 4rem;
+}
+
+.game-over-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(14, 14, 14, 0.925);
+    z-index: 10;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-over-backdrop>h2 {
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.restart-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.restart-button:active {
+    background-color: #45a049;
 }

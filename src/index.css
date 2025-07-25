@@ -13,32 +13,9 @@ body {
   height: 100px;
 }
 
-#game-container {
-  display: flex;
-  flex-direction: column;
-}
 
 header {
   margin-top: 2rem;
   text-align: center;
 }
 
-ol {
-  padding: 0;
-}
-
-#game-board>li>ol {
-  list-style: none;
-  text-align: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-#game-board button {
-  margin: 0.5rem;
-  width: 100px;
-  height: 100px;
-  cursor: pointer;
-  font-size: 4rem;
-}
