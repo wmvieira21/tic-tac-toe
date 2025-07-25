@@ -25,7 +25,14 @@ function App() {
   const [gameTurns, setGameTurns] = useState([]);
   const currentPlayer = deriveCurrentPlayer(gameTurns);
 
-  const gameBoard = initialGameState;
+  const [players, setPlayers] = useState(
+    {
+      'X': 'Player 1',
+      'O': 'PLayer 2'
+    },
+  );
+
+  const gameBoard = [...initialGameState.map(row => [...row])];
 
   for (const turn of gameTurns) {
     const { square, player } = turn;
@@ -46,25 +53,26 @@ function App() {
 
   function handleRestartButtonClick() {
     setGameTurns((prevTurns) => []);
-    
-    initialGameState.forEach((row, rowIndex) => {
-      row.forEach((cell, cellIndex) => {
-        gameBoard[rowIndex][cellIndex] = null;
-      });
-    });
+  }
 
-    console.log('Game restarted');
+  function handlePlayerNameChange(playerSymbol, newName) {
+    setPlayers((prevPlayers) => {
+      return {
+        ...prevPlayers,
+        [playerSymbol]: newName
+      };
+    });
   }
 
   return (
     <main>
       <div id='game-container'>
         <ol id='players' className='highlighted'>
-          <Player initialName='Player 1' symbol='X' isActive={currentPlayer === 'X'} />
-          <Player initialName='Player 2' symbol='O' isActive={currentPlayer === 'O'} />
+          <Player initialName='Player 1' symbol='X' isActive={currentPlayer === 'X'} onChangeName={handlePlayerNameChange} />
+          <Player initialName='Player 2' symbol='O' isActive={currentPlayer === 'O'} onChangeName={handlePlayerNameChange} />
         </ol>
         <GameBoard onSelectedCell={handlePlayerChange} board={gameBoard} />
-        {gameTurns.length >= 9 ? <GameOver className='game-over-backdrop' onRestartButtonClick={() => handleRestartButtonClick()} /> : null}
+        {gameTurns.length >= 9 ? <GameOver className='game-over-backdrop' players={players} onRestartButtonClick={() => handleRestartButtonClick()} /> : null}
       </div>
       <Log entries={gameTurns} />
     </main>
